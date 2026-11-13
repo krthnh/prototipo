@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raíces del Valle | Huerto Comunitario Regenerativo - Huancayo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        tierra: {
+                            50: '#FAF8F5',
+                            100: '#F2ECE1',
+                            200: '#E5D8C3',
+                            300: '#D2BC9B',
+                            400: '#BC9B70',
+                            500: '#A67C52',
+                            600: '#8A613E',
+                            700: '#6E4B31',
+                            800: '#583C29',
+                            900: '#473123',
+                        },
+                        bosque: {
+                            50: '#F2F7F4',
+                            100: '#DFECE4',
+                            200: '#C0D9CA',
+                            300: '#94BEA6',
+                            400: '#639C7D',
+                            500: '#417F5E',
+                            600: '#2F6549',
+                            700: '#26513B',
+                            800: '#204130',
+                            900: '#1B3629',
+                        },
+                        terracota: {
+                            50: '#FDF5F3',
+                            100: '#FCE8E3',
+                            200: '#F9D4CB',
+                            300: '#F4B4A4',
+                            400: '#EC886F',
+                            500: '#DF6446',
+                            600: '#C94A2B',
+                            700: '#A83B20',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos personalizados suaves y transiciones */
+        body {
+            background-color: #FAF8F5;
+            color: #2D2A26;
+        }
+        .tab-active {
+            background-color: #2F6549;
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(47, 101, 73, 0.2);
+        }
+        .card-organic {
+            background: #FFFFFF;
+            border: 1px solid #E5D8C3;
+            border-radius: 1.25rem;
+            box-shadow: 0 4px 20px -2px rgba(71, 49, 35, 0.05);
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Scrollbar sutil */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #F2ECE1; }
+        ::-webkit-scrollbar-thumb { background: #BC9B70; border-radius: 999px; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-bosque-200 selection:text-bosque-900">
+
+    <!-- NOTIFICACIÓN TOAST FLOTANTE (Reemplazo elegante de alert()) -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none max-w-sm w-full px-4 sm:px-0"></div>
+
+    <!-- ===================================================================== -->
+    <!-- PANTALLA DE ACCESO / REGISTRO RÁPIDO SIN CONTRASEÑA                   -->
+    <!-- ===================================================================== -->
+    <div id="auth-screen" class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-tierra-100 via-tierra-50 to-bosque-50">
+        <div class="max-w-4xl w-full grid grid-cols-1 lg:grid-cols-12 bg-white rounded-3xl shadow-xl border border-tierra-200 overflow-hidden animate-fade-in">
+            
+            <!-- Columna Izquierda: Identidad del Proyecto Raíces del Valle -->
+            <div class="lg:col-span-5 bg-bosque-800 text-white p-8 flex flex-col justify-between relative overflow-hidden">
+                <!-- Decoración orgánica SVG -->
+                <svg class="absolute -bottom-12 -right-12 w-64 h-64 text-bosque-700 opacity-40 pointer-events-none" viewBox="0 0 200 200" fill="currentColor">
+                    <path d="M45.7,-76.3C58.9,-69.3,69.1,-55.6,76.3,-41.2C83.5,-26.8,87.7,-11.7,85.6,2.4C83.5,16.5,75.1,29.6,65.2,41.1C55.3,52.6,43.9,62.5,30.8,68.9C17.7,75.3,2.9,78.2,-11.4,76.5C-25.7,74.8,-39.5,68.5,-51.7,59.3C-63.9,50.1,-74.5,38,-80.1,23.8C-85.7,9.6,-86.3,-6.7,-81.2,-21.1C-76.1,-35.5,-65.3,-48,-52.4,-55.3C-39.5,-62.6,-24.5,-64.7,-9.7,-67.8C5.1,-70.9,32.5,-83.3,45.7,-76.3Z" transform="translate(100 100)" />
+                </svg>
+
+                <div class="relative z-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bosque-700/80 border border-bosque-600 text-bosque-100 text-xs font-semibold mb-6">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Huancayo &bull; El Tambo &bull; Chilca
+                    </div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-terracota-500 flex items-center justify-center shadow-lg">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="font-display text-2xl font-extrabold tracking-tight">Raíces del Valle</h1>
+                            <p class="text-bosque-200 text-xs">Huerto Comunitario Regenerativo</p>
+                        </div>
+                    </div>
+                    <p class="text-bosque-100 text-sm leading-relaxed mt-4">
+                        Recuperamos suelos urbanos degradados en el Valle del Mantaro mediante compostaje vecinal y micro-turnos flexibles de <strong>15 a 30 minutos</strong>.
+                    </p>
+                </div>
+
+                <!-- Perfiles Demo Rápidos -->
+                <div class="relative z-10 mt-8 pt-6 border-t border-bosque-700">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-bosque-300 mb-3">Acceso rápido (Vecinos activos):</p>
+                    <div id="quick-login-list" class="space-y-2 max-h-48 overflow-y-auto pr-1">
+                        <!-- Se llena dinámicamente con JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Formulario de Registro Sin Contraseña -->
+            <div class="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-center">
+                <div class="mb-6">
+                    <span class="text-xs font-bold uppercase tracking-wider text-terracota-600">Sin contraseñas &bull; 100% Comunitario</span>
+                    <h2 class="font-display text-2xl font-bold text-tierra-900 mt-1">Únete o registra tu horario</h2>
+                    <p class="text-sm text-tierra-600 mt-1">Elige días y micro-turnos de 15-30 min que se adapten a tu rutina.</p>
+                </div>
+
+                <form id="register-form" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-tierra-800 mb-1">Nombre *</label>
+                            <input type="text" id="reg-nombre" required placeholder="Ej. Norma" class="w-full px-3.5 py-2.5 rounded-xl border border-tierra-300 bg-tierra-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-bosque-500 focus:bg-white transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-tierra-800 mb-1">Apellidos *</label>
+                            <input type="text" id="reg-apellidos" required placeholder="Ej. Huamán" class="w-full px-3.5 py-2.5 rounded-xl border border-tierra-300 bg-tierra-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-bosque-500 focus:bg-white transition">
+                        </div>
+                    </div>
+
+                    <!-- Selección de días disponibles -->
+                    <div>
+                        <label class="block text-xs font-semibold text-tierra-800 mb-1.5">¿Qué días puedes apoyar en el huerto? *</label>
+                        <div class="grid grid-cols-4 sm:grid-cols-7 gap-1.5" id="days-checkboxes">
+                            <!-- Lunes a Domingo -->
+                            <label class="cursor-pointer">
+                                <input type="checkbox" name="dias" value="Lunes" class="peer sr-only">
+                                <div class="text-center py-2 px-1 rounded-xl border border-tierra-200 bg-tierra-50 text-xs font-medium text-tierra-700 peer-checked:bg-bosque-600 peer-checked:text-white peer-checked:border-bosque-600 transition">Lun</div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="checkbox" name="dias" value="Martes" class="peer sr-only">
+                                <div class="text-center py-2 px-1 rounded-xl border border-tierra-200 bg-tierra-50 text-xs font-medium text-tierra-700 peer-checked:bg-bosque-600 peer-checked:text-white peer-checked:border-bosque-600 transition">Mar</div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="checkbox" name="dias" value="Miércoles" class="peer sr-only">
+                                <div class="text-center py-2 px-1 rounded-xl border border-tierra-200 bg-tierra-50 text-xs font-medium text-tierra-700 peer-checked:bg-bosque-600 peer-checked:text-white peer-checked:border-bosque-600 transition">Mié</div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="checkbox" name="dias" value="Jueves" class="peer sr-only">
+                                <div class="text-center py-2 px-1 rounded-xl border border-tierra-200 bg-tierra-50 text-xs font-medium text-tierra-700 peer-checked:bg-bosque-600 peer-checked:text-white peer-checked:border-bosque-600 transition">Jue</div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="checkbox" name="dias" value="Viernes" class="peer sr-only" checked>
+                                <div class="text-center py-2 px-1 rounded-xl border border-tierra-200 bg-tierra-50 text-xs font-medium text-tierra-700 peer-checked:bg-bosque-600 peer-checked:text-white peer-checked:border-bosque-600 transition">Vie</div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="checkbox" name="dias" value="Sábado" class="peer sr-only" checked>
+                                <div class="text-center py-2 px-1 rounded-xl border border-tierra-200 bg-tierra-50 text-xs font-medium text-tierra-700 peer-checked:bg-bosque-600 peer-checked:text-white peer-checked:border-bosque-600 transition">Sáb</div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="checkbox" name="dias" value="Domingo" class="peer sr-only">
+                                <div class="text-center py-2 px-1 rounded-xl border border-tierra-200 bg-tierra-50 text-xs font-medium text-tierra-700 peer-checked:bg-bosque-600 peer-checked:text-white peer-checked:border-bosque-600 transition">Dom</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-tierra-800 mb-1">Bloque horario (15-30 min) *</label>
+                            <select id="reg-horario" class="w-full px-3.5 py-2.5 rounded-xl border border-tierra-300 bg-tierra-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-bosque-500 focus:bg-white">
+                                <option value="Mañana (7:00 - 9:00)">🌅 Mañana (7:00 - 9:00)</option>
+                                <option value="Mediodía (12:00 - 14:00)">☀️ Mediodía (12:00 - 14:00)</option>
+                                <option value="Tarde (16:00 - 18:00)">🌇 Tarde (16:00 - 18:00)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-tierra-800 mb-1">Micro-tarea preferida *</label>
+                            <select id="reg-tarea" class="w-full px-3.5 py-2.5 rounded-xl border border-tierra-300 bg-tierra-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-bosque-500 focus:bg-white">
+                                <option value="Riego">💧 Riego ecológico por goteo</option>
+                                <option value="Compostaje">♻️ Compostaje y volteo orgánico</option>
+                                <option value="Deshierbe/Poda">🌿 Deshierbe, poda y control plagas</option>
+                                <option value="Cosecha">🧺 Cosecha y reparto vecinal</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-3 px-5 rounded-xl bg-bosque-600 hover:bg-bosque-700 text-white font-semibold text-sm shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 mt-2">
+                        <span>Ingresar al Huerto Comunitario</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- APLICACIÓN PRINCIPAL (DASHBOARD DEL HUERTO COMUNITARIO)               -->
+    <!-- ===================================================================== -->
+    <div id="app-screen" class="hidden flex-1 flex flex-col">
+        
+        <!-- BARRA SUPERIOR DE NAVEGACIÓN -->
+        <header class="bg-white border-b border-tierra-200 sticky top-0 z-30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+                <!-- Logo y Título -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-bosque-600 text-white flex items-center justify-center shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-display font-bold text-tierra-900 text-base sm:text-lg leading-none">Raíces del Valle</span>
+                            <span class="hidden md:inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-tierra-100 text-tierra-700 rounded-full">Chilca - Huancayo</span>
+                        </div>
+                        <p class="text-xs text-tierra-500 hidden sm:block">Gobernanza vecinal y agricultura regenerativa</p>
+                    </div>
+                </div>
+
+                <!-- Simulador de Día Actual + Perfil de Usuario -->
+                <div class="flex items-center gap-2 sm:gap-4">
+                    <!-- Selector para probar otros días -->
+                    <div class="flex items-center gap-1.5 bg-tierra-50 border border-tierra-200 px-2.5 py-1.5 rounded-xl">
+                        <svg class="w-4 h-4 text-tierra-600 hidden sm:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <label for="sim-day-select" class="text-xs font-medium text-tierra-600 hidden md:inline">Día:</label>
+                        <select id="sim-day-select" class="bg-transparent text-xs sm:text-sm font-bold text-tierra-900 focus:outline-none cursor-pointer">
+                            <option value="Lunes">Lunes</option>
+                            <option value="Martes">Martes</option>
+                            <option value="Miércoles">Miércoles</option>
+                            <option value="Jueves">Jueves</option>
+                            <option value="Viernes">Viernes</option>
+                            <option value="Sábado">Sábado</option>
+                            <option value="Domingo">Domingo</option>
+                        </select>
+                    </div>
+
+                    <!-- Info Usuario y Botón Salir -->
+                    <div class="flex items-center gap-2 pl-2 border-l border-tierra-200">
+                        <div class="text-right hidden sm:block">
+                            <p id="nav-user-name" class="text-xs font-bold text-tierra-900 leading-tight">Usuario</p>
+                            <p id="nav-user-points" class="text-[11px] font-semibold text-bosque-600">0 pts cosecha</p>
+                        </div>
+                        <button id="btn-logout" title="Cambiar vecino o salir" class="p-2 rounded-xl bg-tierra-100 hover:bg-terracota-100 text-tierra-700 hover:text-terracota-700 transition flex items-center gap-1 text-xs font-semibold">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                            <span class="hidden md:inline">Cambiar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- BANNER DE ALERTA DE HELADAS EN HUANCAYO (VALOR AGREGADO) -->
+        <div id="frost-alert-banner" class="bg-gradient-to-r from-sky-900 via-slate-800 to-bosque-900 text-white px-4 py-2.5 shadow-inner">
+            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
+                <div class="flex items-center gap-2.5">
+                    <span class="flex-shrink-0 w-7 h-7 rounded-lg bg-sky-500/20 border border-sky-400/30 flex items-center justify-center text-sky-300">
+                        ❄️
+                    </span>
+                    <div>
+                        <span class="font-bold text-sky-200 uppercase tracking-wide">Alerta Agrometeorológica Huancayo (3,259 m s.n.m.):</span>
+                        <span class="text-slate-200 ml-1">Descenso térmico nocturno previsto (2°C). Recomendación Ing. Carlos Yauri: <strong>cubrir almácigos tiernos de lechuga con malla raschel o paja seca</strong> a partir de las 17:30 hrs.</span>
+                    </div>
+                </div>
+                <button onclick="document.getElementById('frost-alert-banner').classList.add('hidden')" class="text-slate-400 hover:text-white self-end sm:self-center text-xs underline shrink-0">Ocultar aviso</button>
+            </div>
+        </div>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+            
+            <!-- PANEL SUPERIOR DE IMPACTO COMUNITARIO Y CLIMA (KPIs) -->
+            <section class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                
+                <!-- Control de Lluvia / Clima (Ocupa 5 cols) -->
+                <div id="rain-control-card" class="md:col-span-5 card-organic p-5 flex flex-col justify-between transition-colors duration-300">
+                    <div class="flex items-start justify-between gap-3">
+                        <div>
+                            <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-tierra-500">
+                                🌦️ Sensor Climático Vecinal
+                            </span>
+                            <h3 class="font-display text-lg font-bold text-tierra-900 mt-0.5">¿Llovió hoy en Huancayo?</h3>
+                            <p id="rain-status-desc" class="text-xs text-tierra-600 mt-1">
+                                Sin reporte de lluvia. Los turnos de riego ecológico por goteo están activos.
+                            </p>
+                        </div>
+                        <div id="rain-icon-badge" class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl shrink-0">
+                            ☀️
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-tierra-100 flex items-center gap-2">
+                        <button id="btn-rain-yes" onclick="setRainStatus(true)" class="flex-1 py-2 px-3 rounded-xl text-xs font-bold border transition flex items-center justify-center gap-1.5">
+                            🌧️ Sí, llovió (Suspender riego)
+                        </button>
+                        <button id="btn-rain-no" onclick="setRainStatus(false)" class="flex-1 py-2 px-3 rounded-xl text-xs font-bold border transition flex items-center justify-center gap-1.5">
+                            ☀️ No llovió (Riego normal)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Medidor de Compostaje Comunitario (Ocupa 4 cols) -->
+                <div class="md:col-span-4 card-organic p-5 flex flex-col justify-between bg-gradient-to-br from-white to-bosque-50/60">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-bosque-700">♻️ Economía Circular</span>
+                            <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-bosque-100 text-bosque-800">Meta: 500 kg/mes</span>
+                        </div>
+                        <div class="mt-2 flex items-baseline gap-2">
+                            <span id="compost-kg-display" class="font-display text-3xl font-extrabold text-bosque-800">342</span>
+                            <span class="text-sm font-semibold text-bosque-600">kg compostados</span>
+                        </div>
+                        <p class="text-xs text-tierra-600 mt-1">Residuos orgánicos domiciliarios transformados en humus para reactivar suelos.</p>
+                    </div>
+                    <div class="mt-3">
+                        <div class="w-full h-2.5 bg-tierra-200 rounded-full overflow-hidden">
+                            <div id="compost-progress-bar" class="h-full bg-bosque-600 rounded-full transition-all duration-500" style="width: 68.4%"></div>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-[11px] text-tierra-500">68% de la meta mensual</span>
+                            <button onclick="addCompostContribution()" class="text-xs font-bold text-bosque-700 hover:text-bosque-900 underline">+ Registrar aporte (+5 kg)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mis Puntos de Cosecha y Gobernanza (Ocupa 3 cols) -->
+                <div class="md:col-span-3 card-organic p-5 flex flex-col justify-between bg-gradient-to-br from-white to-terracota-50/50">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-terracota-600">🧺 Reparto Equitativo</span>
+                        <div class="mt-2 flex items-baseline gap-1.5">
+                            <span id="card-user-points" class="font-display text-3xl font-extrabold text-tierra-900">120</span>
+                            <span class="text-xs font-bold text-terracota-600">pts cosecha</span>
+                        </div>
+                        <p class="text-xs text-tierra-600 mt-1">Canjeables por canastas de hortalizas orgánicas este sábado.</p>
+                    </div>
+                    <div class="mt-3 pt-2 border-t border-tierra-100 flex items-center justify-between text-xs">
+                        <span class="text-tierra-600">Estado canasta:</span>
+                        <span id="basket-status-badge" class="font-bold text-bosque-700 bg-bosque-100 px-2 py-0.5 rounded-lg">Califica (1.5 kg)</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NAVEGACIÓN POR PESTAÑAS (TABS) -->
+            <nav class="flex flex-wrap gap-2 bg-tierra-100/80 p-1.5 rounded-2xl border border-tierra-200">
+                <button onclick="switchTab('tab-mi-turno')" id="btn-tab-mi-turno" class="tab-active flex-1 sm:flex-none px-5 py-2.5 rounded-xl text-sm font-bold transition flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>1. Mi Turno Hoy</span>
+                </button>
+                <button onclick="switchTab('tab-cronograma')" id="btn-tab-cronograma" class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl text-sm font-bold text-tierra-700 hover:bg-white/60 transition flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                    <span>2. Cronograma Vecinal</span>
+                </button>
+                <button onclick="switchTab('tab-cultivos')" id="btn-tab-cultivos" class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl text-sm font-bold text-tierra-700 hover:bg-white/60 transition flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    <span>3. Seguimiento de Cultivos</span>
+                </button>
+            </nav>
+
+            <!-- ================================================================= -->
+            <!-- PESTAÑA 1: MI TURNO (¿ME TOCA IR HOY?)                            -->
+            <!-- ================================================================= -->
+            <div id="tab-mi-turno" class="animate-fade-in space-y-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    
+                    <!-- Tarjeta Principal de Estado del Turno -->
+                    <div class="lg:col-span-7 card-organic p-6 sm:p-8 flex flex-col justify-between">
+                        <div>
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                                <span class="px-3 py-1 rounded-full bg-tierra-100 text-tierra-800 text-xs font-bold">
+                                    Hoy es <span id="today-label-display" class="text-bosque-700 underline">Viernes</span>
+                                </span>
+                                <span id="user-role-badge" class="px-3 py-1 rounded-full bg-bosque-100 text-bosque-800 text-xs font-semibold">
+                                    Micro-turno: 15 - 30 min
+                                </span>
+                            </div>
+
+                            <!-- Banner dinámico: ¿Te toca ir hoy? -->
+                            <div id="my-turn-status-box" class="p-6 rounded-2xl border-2 transition-all">
+                                <!-- Inyectado por JS -->
+                            </div>
+
+                            <!-- Checklist de Micro-tareas -->
+                            <div id="my-tasks-section" class="mt-6">
+                                <h4 class="font-display font-bold text-tierra-900 text-base mb-3 flex items-center gap-2">
+                                    <span>📋 Protocolo de Micro-tarea (15-30 min)</span>
+                                </h4>
+                                <div id="my-tasks-checklist" class="space-y-2.5">
+                                    <!-- Inyectado por JS -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botón de acción del turno -->
+                        <div id="my-turn-actions" class="mt-6 pt-5 border-t border-tierra-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <p class="text-xs text-tierra-500">Al completar tu micro-turno sumas <strong>+30 puntos</strong> para el reparto semanal de hortalizas.</p>
+                            <button id="btn-complete-turn" onclick="completeMyTurn()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-bosque-600 hover:bg-bosque-700 text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                <span>Marcar Turno Completado</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Columna Lateral: Resumen de Mi Disponibilidad y Compañeros de Hoy -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <!-- Mi ficha de disponibilidad -->
+                        <div class="card-organic p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="font-display font-bold text-tierra-900 text-base">👤 Mi Disponibilidad Registrada</h4>
+                                <button onclick="openEditScheduleModal()" class="text-xs font-bold text-bosque-600 hover:text-bosque-800 underline">Editar horario</button>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between py-2 border-b border-tierra-100">
+                                    <span class="text-tierra-500">Vecino(a):</span>
+                                    <span id="profile-fullname" class="font-bold text-tierra-900">-</span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-tierra-100">
+                                    <span class="text-tierra-500">Bloque horario:</span>
+                                    <span id="profile-schedule" class="font-semibold text-tierra-800">-</span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-tierra-100">
+                                    <span class="text-tierra-500">Especialidad:</span>
+                                    <span id="profile-task" class="font-semibold text-bosque-700">-</span>
+                                </div>
+                                <div class="pt-1">
+                                    <span class="text-tierra-500 block mb-2">Días asignados:</span>
+                                    <div id="profile-days-pills" class="flex flex-wrap gap-1.5">
+                                        <!-- Pills de días -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Compañeros que van hoy -->
+                        <div class="card-organic p-6 bg-tierra-50/70">
+                            <h4 class="font-display font-bold text-tierra-900 text-base mb-1">🤝 Equipo de guardia hoy</h4>
+                            <p class="text-xs text-tierra-600 mb-4">Vecinos programados para el día <span class="font-bold current-day-text">Viernes</span>:</p>
+                            <div id="today-companions-list" class="space-y-2.5">
+                                <!-- Lista de compañeros -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================================================================= -->
+            <!-- PESTAÑA 2: CRONOGRAMA COMUNITARIO (TABLA DE TURNOS)               -->
+            <!-- ================================================================= -->
+            <div id="tab-cronograma" class="hidden animate-fade-in space-y-5">
+                <div class="card-organic p-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-tierra-900">Cronograma Semanal de Turnos Flexibles</h3>
+                            <p class="text-sm text-tierra-600">Transparencia vecinal: visualiza quién cuida el huerto cada día y el impacto del clima en el riego.</p>
+                        </div>
+
+                        <!-- Filtros de la tabla -->
+                        <div class="flex flex-wrap items-center gap-2">
+                            <select id="filter-day" onchange="renderScheduleTable()" class="px-3 py-2 rounded-xl border border-tierra-300 bg-tierra-50 text-xs font-semibold text-tierra-800 focus:outline-none focus:ring-2 focus:ring-bosque-500">
+                                <option value="TODOS">📅 Todos los días</option>
+                                <option value="HOY">⭐ Solo Hoy (<span class="current-day-text"></span>)</option>
+                                <option value="Lunes">Lunes</option>
+                                <option value="Martes">Martes</option>
+                                <option value="Miércoles">Miércoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>
+                                <option value="Sábado">Sábado</option>
+                                <option value="Domingo">Domingo</option>
+                            </select>
+
+                            <select id="filter-task" onchange="renderScheduleTable()" class="px-3 py-2 rounded-xl border border-tierra-300 bg-tierra-50 text-xs font-semibold text-tierra-800 focus:outline-none focus:ring-2 focus:ring-bosque-500">
+                                <option value="TODAS">🌱 Todas las micro-tareas</option>
+                                <option value="Riego">💧 Riego</option>
+                                <option value="Compostaje">♻️ Compostaje</option>
+                                <option value="Deshierbe/Poda">🌿 Deshierbe/Poda</option>
+                                <option value="Cosecha">🧺 Cosecha</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Tabla Responsiva -->
+                    <div class="overflow-x-auto rounded-2xl border border-tierra-200">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-tierra-100/80 text-tierra-800 text-xs uppercase tracking-wider border-b border-tierra-200">
+                                    <th class="py-3.5 px-4 font-bold">Día</th>
+                                    <th class="py-3.5 px-4 font-bold">Vecino(a) / Rol</th>
+                                    <th class="py-3.5 px-4 font-bold">Bloque Horario</th>
+                                    <th class="py-3.5 px-4 font-bold">Micro-tarea (15-30m)</th>
+                                    <th class="py-3.5 px-4 font-bold">Estado Operativo</th>
+                                </tr>
+                            </thead>
+                            <tbody id="schedule-table-body" class="divide-y divide-tierra-100 text-sm">
+                                <!-- Filas generadas dinámicamente por JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================================================================= -->
+            <!-- PESTAÑA 3: SEGUIMIENTO DE CULTIVOS (DATOS AGRONÓMICOS REALES)     -->
+            <!-- ================================================================= -->
+            <div id="tab-cultivos" class="hidden animate-fade-in space-y-6">
+                
+                <!-- Barra de control de cultivos y simulación de tiempo -->
+                <div class="card-organic p-5 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 bg-gradient-to-r from-bosque-50 to-tierra-50">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-bosque-700">Asesoría Técnica: Ing. Carlos Yauri</span>
+                        <h3 class="font-display text-xl font-bold text-tierra-900">Parcelas Activas & Ciclo Fenológico Real</h3>
+                        <p class="text-xs text-tierra-600 mt-0.5">Especies seleccionadas por su alta densidad nutricional y resistencia a heladas en Huancayo.</p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2.5 w-full lg:w-auto">
+                        <!-- Simulador de avance de días para probar el crecimiento real -->
+                        <div class="flex items-center gap-1.5 bg-white px-3 py-2 rounded-xl border border-tierra-200 shadow-sm">
+                            <span class="text-xs font-semibold text-tierra-700">⏳ Simular tiempo:</span>
+                            <button onclick="advanceCropDays(5)" class="px-2.5 py-1 rounded-lg bg-tierra-100 hover:bg-tierra-200 text-tierra-900 text-xs font-bold transition">+5 días</button>
+                            <button onclick="advanceCropDays(15)" class="px-2.5 py-1 rounded-lg bg-tierra-100 hover:bg-tierra-200 text-tierra-900 text-xs font-bold transition">+15 días</button>
+                        </div>
+
+                        <button onclick="openNewCropModal()" class="px-4 py-2.5 rounded-xl bg-bosque-600 hover:bg-bosque-700 text-white text-xs font-bold shadow-sm transition flex items-center gap-1.5">
+                            <span>+ Registrar Nueva Siembra</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Grid de Tarjetas de Cultivos -->
+                <div id="crops-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Tarjetas generadas dinámicamente por JS -->
+                </div>
+            </div>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="bg-white border-t border-tierra-200 py-5 px-4 mt-12">
+            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-tierra-500">
+                <p><strong>Proyecto Raíces del Valle</strong> &bull; Lab Liderazgo e Innovación (Huancayo - Junín)</p>
+                <p>ODS 2 Hambre Cero &bull; ODS 11 Ciudades Sostenibles &bull; ODS 12 Producción Responsable</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL: REGISTRAR NUEVA SIEMBRA                                        -->
+    <!-- ===================================================================== -->
+    <div id="modal-new-crop" class="fixed inset-0 z-50 hidden bg-tierra-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-tierra-200 animate-fade-in">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-display text-lg font-bold text-tierra-900">🌱 Registrar Nueva Siembra</h3>
+                <button onclick="closeNewCropModal()" class="text-tierra-400 hover:text-tierra-700 font-bold text-lg">&times;</button>
+            </div>
+            <form id="new-crop-form" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-tierra-800 mb-1">Especie adaptada a Huancayo *</label>
+                    <select id="crop-species-select" onchange="updateCropPresetInfo()" class="w-full px-3.5 py-2.5 rounded-xl border border-tierra-300 bg-tierra-50 text-sm focus:outline-none focus:ring-2 focus:ring-bosque-500">
+                        <option value="Zanahoria">🥕 Zanahoria Chantenay (80 días a cosecha)</option>
+                        <option value="Acelga">🥬 Acelga Verde Penca Blanca (60 días a cosecha)</option>
+                        <option value="Espinaca">🍃 Espinaca Viroflay (50 días a cosecha)</option>
+                        <option value="Lechuga">🥗 Lechuga Seda / Orgánica (65 días a cosecha)</option>
+                        <option value="Rabanito">radish Rabanito Crimson Giant (30 días a cosecha)</option>
+                        <option value="Quinua">🌾 Quinua Blanca de Junín (120 días a cosecha)</option>
+                    </select>
+                </div>
+
+                <div id="crop-preset-details" class="p-3 rounded-xl bg-bosque-50 border border-bosque-200 text-xs text-bosque-900 space-y-1">
+                    <!-- Info agronómica automática -->
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-tierra-800 mb-1">Cama / Parcela *</label>
+                        <input type="text" id="crop-bed" required placeholder="Ej. Cama Elevada #4" class="w-full px-3 py-2 rounded-xl border border-tierra-300 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-tierra-800 mb-1">Días ya transcurridos</label>
+                        <input type="number" id="crop-initial-days" value="0" min="0" max="150" class="w-full px-3 py-2 rounded-xl border border-tierra-300 text-sm">
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeNewCropModal()" class="px-4 py-2 rounded-xl text-xs font-bold text-tierra-600 hover:bg-tierra-100">Cancelar</button>
+                    <button type="submit" class="px-5 py-2 rounded-xl bg-bosque-600 hover:bg-bosque-700 text-white text-xs font-bold shadow">Sembrar en Parcela</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL: EDITAR MI HORARIO                                              -->
+    <!-- ===================================================================== -->
+    <div id="modal-edit-schedule" class="fixed inset-0 z-50 hidden bg-tierra-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-tierra-200 animate-fade-in">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-display text-lg font-bold text-tierra-900">🕒 Actualizar mi Disponibilidad</h3>
+                <button onclick="closeEditScheduleModal()" class="text-tierra-400 hover:text-tierra-700 font-bold text-lg">&times;</button>
+            </div>
+            <form id="edit-schedule-form" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-tierra-800 mb-1.5">Días disponibles:</label>
+                    <div class="grid grid-cols-4 gap-2" id="edit-days-container">
+                        <!-- Checkboxes generados dinámicamente -->
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-tierra-800 mb-1">Bloque horario:</label>
+                    <select id="edit-horario" class="w-full px-3.5 py-2.5 rounded-xl border border-tierra-300 bg-tierra-50 text-sm">
+                        <option value="Mañana (7:00 - 9:00)">🌅 Mañana (7:00 - 9:00)</option>
+                        <option value="Mediodía (12:00 - 14:00)">☀️ Mediodía (12:00 - 14:00)</option>
+                        <option value="Tarde (16:00 - 18:00)">🌇 Tarde (16:00 - 18:00)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-tierra-800 mb-1">Micro-tarea preferida:</label>
+                    <select id="edit-tarea" class="w-full px-3.5 py-2.5 rounded-xl border border-tierra-300 bg-tierra-50 text-sm">
+                        <option value="Riego">💧 Riego ecológico por goteo</option>
+                        <option value="Compostaje">♻️ Compostaje y volteo orgánico</option>
+                        <option value="Deshierbe/Poda">🌿 Deshierbe, poda y control plagas</option>
+                        <option value="Cosecha">🧺 Cosecha y reparto vecinal</option>
+                    </select>
+                </div>
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeEditScheduleModal()" class="px-4 py-2 rounded-xl text-xs font-bold text-tierra-600 hover:bg-tierra-100">Cancelar</button>
+                    <button type="submit" class="px-5 py-2 rounded-xl bg-bosque-600 hover:bg-bosque-700 text-white text-xs font-bold shadow">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- LÓGICA JAVASCRIPT DE LA APLICACIÓN                                    -->
+    <!-- ===================================================================== -->
+    <script>
+        // ---------------------------------------------------------------------
+        // 1. BASE DE CONOCIMIENTO AGRONÓMICO REAL (HUANCAYO - SIERRA CENTRAL)
+        // ---------------------------------------------------------------------
+        const CROP_KNOWLEDGE_BASE = {
+            "Zanahoria": {
+                emoji: "🥕",
+                scientificName: "Daucus carota (Var. Chantenay)",
+                totalDays: 80,
+                frostTolerance: "Alta (Soporta hasta -3°C)",
+                wateringFreq: "Cada 2 días (Riego ligero y constante)",
+                soilNote: "Requiere tierra suelta enriquecida con humus tamizado.",
+                stages: [
+                    { maxPct: 20, name: "Germinación lenta", tip: "Mantener humedad superficial sin encharcar." },
+                    { maxPct: 65, name: "Desarrollo foliar y raíz", tip: "Realizar raleo (entresaque) a 5 cm entre plantas." },
+                    { maxPct: 99, name: "Engrosamiento de raíz", tip: "Aporcar levemente para evitar hombros verdes." },
+                    { maxPct: 100, name: "¡Lista para cosecha!", tip: "Humedecer el suelo antes de extraer para no quebrar." }
+                ]
+            },
+            "Acelga": {
+                emoji: "🥬",
+                scientificName: "Beta vulgaris var. cicla",
+                totalDays: 60,
+                frostTolerance: "Muy Alta (Ideal para heladas de Huancayo)",
+                wateringFreq: "Cada 2-3 días",
+                soilNote: "Alta demanda de nitrógeno (compost maduro).",
+                stages: [
+                    { maxPct: 20, name: "Emergencia de plántula", tip: "Proteger de aves y babosas con ceniza alrededor." },
+                    { maxPct: 75, name: "Crecimiento vegetativo", tip: "Aplicar biol foliar cada 15 días." },
+                    { maxPct: 99, name: "Maduración de pencas", tip: "Se pueden cosechar hojas exteriores de forma escalonada." },
+                    { maxPct: 100, name: "¡Lista para cosecha!", tip: "Cortar hojas externas a 3 cm del cuello para rebrote." }
+                ]
+            },
+            "Espinaca": {
+                emoji: "🍃",
+                scientificName: "Spinacia oleracea (Var. Viroflay)",
+                totalDays: 50,
+                frostTolerance: "Muy Alta (Soporta heladas blancas)",
+                wateringFreq: "Cada 2 días",
+                soilNote: "Suelo franco con buen drenaje y pH neutro.",
+                stages: [
+                    { maxPct: 22, name: "Germinación", tip: "Sembrar a 1.5 cm de profundidad." },
+                    { maxPct: 80, name: "Expansión de roseta", tip: "Deshierbe manual suave para no dañar raíces." },
+                    { maxPct: 99, name: "Pre-cosecha", tip: "Rica en hierro para combatir la anemia regional." },
+                    { maxPct: 100, name: "¡Lista para cosecha!", tip: "Cosechar antes de que emita tallo floral." }
+                ]
+            },
+            "Lechuga": {
+                emoji: "🥗",
+                scientificName: "Lactuca sativa (Orgánica)",
+                totalDays: 65,
+                frostTolerance: "Media-Alta (Proteger en heladas fuertes)",
+                wateringFreq: "Diario o interdiario por goteo",
+                soilNote: "Requiere humedad constante y abono orgánico fino.",
+                stages: [
+                    { maxPct: 25, name: "Almácigo / Trasplante", tip: "Cubrir con malla raschel durante las noches frías." },
+                    { maxPct: 70, name: "Formación de hojas", tip: "Evitar mojar el centro para prevenir hongos." },
+                    { maxPct: 99, name: "Acogollado", tip: "Mantener riego por goteo con botellas PET." },
+                    { maxPct: 100, name: "¡Lista para cosecha!", tip: "Cortar al ras del suelo temprano por la mañana." }
+                ]
+            },
+            "Rabanito": {
+                emoji: "🌰",
+                scientificName: "Raphanus sativus (Ciclo corto)",
+                totalDays: 30,
+                frostTolerance: "Alta",
+                wateringFreq: "Cada 2 días (Muy regular)",
+                soilNote: "Excelente cultivo trampa y de cosecha rápida para motivar vecinos.",
+                stages: [
+                    { maxPct: 20, name: "Germinación rápida (4-6 días)", tip: "Asegurar buena iluminación solar." },
+                    { maxPct: 75, name: "Formación de bulbo", tip: "Si falta agua se vuelve picante o hueco." },
+                    { maxPct: 99, name: "Engrosamiento final", tip: "Revisar diámetro en superficie (2.5 - 3 cm)." },
+                    { maxPct: 100, name: "¡Lista para cosecha!", tip: "Cosechar de inmediato para evitar que se ponga esponjoso." }
+                ]
+            },
+            "Quinua": {
+                emoji: "🌾",
+                scientificName: "Chenopodium quinoa (Blanca Junín)",
+                totalDays: 120,
+                frostTolerance: "Extrema (Nativa de los Andes)",
+                wateringFreq: "Cada 4-5 días (Bajo requerimiento hídrico)",
+                soilNote: "Fijadora y recuperadora de suelos compactados.",
+                stages: [
+                    { maxPct: 15, name: "Emergencia y dos hojas", tip: "Resistente al frío andino." },
+                    { maxPct: 50, name: "Ramificación y panoja", tip: "Aporcar para evitar acame por viento." },
+                    { maxPct: 85, name: "Grano lechoso / pastoso", tip: "Colocar espantapájaros ecológicos en el perímetro." },
+                    { maxPct: 100, name: "¡Lista para cosecha!", tip: "Segar panojas secas y trillar en manta comunitaria." }
+                ]
+            }
+        };
+
+        // Checklist específico por tipo de micro-tarea (15-30 minutos)
+        const MICRO_TASK_PROTOCOLS = {
+            "Riego": [
+                "Verificar humedad del sustrato a 3 cm de profundidad con el dedo.",
+                "Rellenar botellas del sistema de riego por goteo ecológico.",
+                "Revisar que no haya obstrucciones en los goteros de las camas elevadas."
+            ],
+            "Compostaje": [
+                "Recibir y pesar baldes con residuos orgánicos de los vecinos en el punto de acopio.",
+                "Voltear la pila de compost para oxigenar y agregar capa de material seco (aserrín/hojas).",
+                "Verificar temperatura y humedad de la cama de lombriz roja californiana."
+            ],
+            "Deshierbe/Poda": [
+                "Retirar malezas competidoras alrededor de acelgas y zanahorias.",
+                "Aplicar repelente ecológico de rocoto y ajo si se detectan pulgones.",
+                "Revisar las flores nativas del corredor de polinizadores."
+            ],
+            "Cosecha": [
+                "Cosechar hortalizas maduras según la tabla de seguimiento.",
+                "Pesar la producción total en la balanza comunitaria para registro transparente.",
+                "Separar las canastas según los puntos acumulados de cada familia."
+            ]
+        };
+
+        const ALL_DAYS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+
+        // ---------------------------------------------------------------------
+        // 2. DATOS INICIALES REALISTAS (ACTORES DEL PROYECTO RAÍCES DEL VALLE)
+        // ---------------------------------------------------------------------
+        const DEFAULT_USERS = [
+            {
+                id: "u1",
+                nombre: "Carmen",
+                apellidos: "Flores",
+                rol: "Líder Ambiental / Docente Jubilada (Chilca)",
+                dias: ["Lunes", "Miércoles", "Viernes", "Sábado"],
+                horario: "Mañana (7:00 - 9:00)",
+                tarea: "Compostaje",
+                puntos: 210
+            },
+            {
+                id: "u2",
+                nombre: "Ing. Carlos",
+                apellidos: "Yauri",
+                rol: "Asesor Agrónomo (Junín)",
+                dias: ["Miércoles", "Sábado"],
+                horario: "Mañana (7:00 - 9:00)",
+                tarea: "Deshierbe/Poda",
+                puntos: 180
+            },
+            {
+                id: "u3",
+                nombre: "Norma",
+                apellidos: "Huamán",
+                rol: "Vecina de El Tambo",
+                dias: ["Viernes", "Sábado", "Domingo"],
+                horario: "Tarde (16:00 - 18:00)",
+                tarea: "Riego",
+                puntos: 120
+            },
+            {
+                id: "u4",
+                nombre: "Kevin",
+                apellidos: "Quispe",
+                rol: "Estudiante Universitario (Huancayo Cercado)",
+                dias: ["Sábado"],
+                horario: "Mañana (7:00 - 9:00)",
+                tarea: "Compostaje",
+                puntos: 90
+            },
+            {
+                id: "u5",
+                nombre: "Roberto",
+                apellidos: "Mayta",
+                rol: "Transportista (Micro-turno 20 min)",
+                dias: ["Martes", "Jueves", "Domingo"],
+                horario: "Mediodía (12:00 - 14:00)",
+                tarea: "Riego",
+                puntos: 110
+            }
+        ];
+
+        const DEFAULT_CROPS = [
+            {
+                id: "c1",
+                species: "Zanahoria",
+                bed: "Cama Elevada #1 (Sector Sol)",
+                daysElapsed: 62, // 62 de 80 días
+                plantedDate: "12 Sep 2026"
+            },
+            {
+                id: "c2",
+                species: "Acelga",
+                bed: "Cama Regenerativa #2",
+                daysElapsed: 48, // 48 de 60 días
+                plantedDate: "26 Sep 2026"
+            },
+            {
+                id: "c3",
+                species: "Rabanito",
+                bed: "Módulo Rápido #3",
+                daysElapsed: 30, // 30 de 30 días -> Lista para cosecha!
+                plantedDate: "14 Oct 2026"
+            },
+            {
+                id: "c4",
+                species: "Lechuga",
+                bed: "Almácigo Protegido #1",
+                daysElapsed: 22, // 22 de 65 días
+                plantedDate: "22 Oct 2026"
+            },
+            {
+                id: "c5",
+                species: "Quinua",
+                bed: "Cerco Vivo Perimetral",
+                daysElapsed: 85, // 85 de 120 días
+                plantedDate: "20 Ago 2026"
+            }
+        ];
+
+        // ---------------------------------------------------------------------
+        // 3. ESTADO DE LA APLICACIÓN (CON PERSISTENCIA EN LOCALSTORAGE)
+        // ---------------------------------------------------------------------
+        let state = {
+            users: [],
+            currentUserId: null,
+            currentDay: "Viernes", // Día por defecto (coincide con fecha actual del contexto)
+            isRaining: false,
+            compostKg: 342,
+            completedTurnsToday: {}, // { "Viernes_u1": true }
+            crops: []
+        };
+
+        function loadState() {
+            const saved = localStorage.getItem("raices_del_valle_state_v1");
+            if (saved) {
+                try {
+                    state = JSON.parse(saved);
+                } catch (e) {
+                    console.error("Error cargando estado:", e);
+                    initDefaultState();
+                }
+            } else {
+                initDefaultState();
+            }
+        }
+
+        function initDefaultState() {
+            state = {
+                users: [...DEFAULT_USERS],
+                currentUserId: null,
+                currentDay: getRealSpanishDayName(),
+                isRaining: false,
+                compostKg: 342,
+                completedTurnsToday: {},
+                crops: [...DEFAULT_CROPS]
+            };
+            saveState();
+        }
+
+        function saveState() {
+            localStorage.setItem("raices_del_valle_state_v1", JSON.stringify(state));
+        }
+
+        function getRealSpanishDayName() {
+            const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+            return days[new Date().getDay()];
+        }
+
+        function getCurrentUser() {
+            return state.users.find(u => u.id === state.currentUserId) || null;
+        }
+
+        // ---------------------------------------------------------------------
+        // 4. SISTEMA DE NOTIFICACIONES VISUALES (TOAST)
+        // ---------------------------------------------------------------------
+        function showToast(message, type = "success") {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            
+            const styles = {
+                success: "bg-bosque-800 text-white border-bosque-600",
+                rain: "bg-sky-900 text-white border-sky-600",
+                info: "bg-tierra-800 text-white border-tierra-600"
+            };
+
+            const icons = {
+                success: "✅",
+                rain: "🌧️",
+                info: "🌱"
+            };
+
+            toast.className = `pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-2xl border shadow-xl text-xs font-medium animate-fade-in ${styles[type] || styles.info}`;
+            toast.innerHTML = `<span class="text-base">${icons[type] || "🌱"}</span><span>${message}</span>`;
+            
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = "0";
+                toast.style.transform = "translateY(8px)";
+                toast.style.transition = "all 0.3s ease";
+                setTimeout(() => toast.remove(), 300);
+            }, 3800);
+        }
+
+        // ---------------------------------------------------------------------
+        // 5. AUTENTICACIÓN Y REGISTRO SIN CONTRASEÑA
+        // ---------------------------------------------------------------------
+        function renderQuickLoginList() {
+            const list = document.getElementById("quick-login-list");
+            list.innerHTML = state.users.map(u => `
+                <button type="button" onclick="loginAsUser('${u.id}')" class="w-full text-left p-2.5 rounded-xl bg-bosque-700/60 hover:bg-bosque-600 border border-bosque-600/80 transition flex items-center justify-between group">
+                    <div>
+                        <p class="text-xs font-bold text-white group-hover:text-emerald-200">${u.nombre} ${u.apellidos}</p>
+                        <p class="text-[11px] text-bosque-200">${u.tarea} &bull; ${u.dias.slice(0,3).join(", ")}${u.dias.length > 3 ? '...' : ''}</p>
+                    </div>
+                    <span class="text-xs font-bold text-emerald-300 bg-bosque-900/50 px-2 py-1 rounded-lg">Entrar &rarr;</span>
+                </button>
+            `).join("");
+        }
+
+        function loginAsUser(userId) {
+            state.currentUserId = userId;
+            saveState();
+            const user = getCurrentUser();
+            showToast(`¡Bienvenido(a) al huerto, ${user.nombre}!`, "success");
+            updateUI();
+        }
+
+        document.getElementById("register-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById("reg-nombre").value.trim();
+            const apellidos = document.getElementById("reg-apellidos").value.trim();
+            const horario = document.getElementById("reg-horario").value;
+            const tarea = document.getElementById("reg-tarea").value;
+            
+            const checkedDays = Array.from(document.querySelectorAll('input[name="dias"]:checked')).map(cb => cb.value);
+            if (checkedDays.length === 0) {
+                showToast("Por favor selecciona al menos un día de la semana.", "info");
+                return;
+            }
+
+            // Verificar si ya existe por nombre y apellido para actualizar o crear nuevo
+            let existing = state.users.find(u => 
+                u.nombre.toLowerCase() === nombre.toLowerCase() && 
+                u.apellidos.toLowerCase() === apellidos.toLowerCase()
+            );
+
+            if (existing) {
+                existing.dias = checkedDays;
+                existing.horario = horario;
+                existing.tarea = tarea;
+                state.currentUserId = existing.id;
+                showToast(`Horario actualizado para ${existing.nombre} ${existing.apellidos}.`, "success");
+            } else {
+                const newUser = {
+                    id: "u_" + Date.now(),
+                    nombre,
+                    apellidos,
+                    rol: "Vecino(a) Participante",
+                    dias: checkedDays,
+                    horario,
+                    tarea,
+                    puntos: 60 // Bono de bienvenida
+                };
+                state.users.push(newUser);
+                state.currentUserId = newUser.id;
+                showToast(`¡Registro exitoso! Bienvenido(a) ${nombre}.`, "success");
+            }
+
+            saveState();
+            this.reset();
+            updateUI();
+        });
+
+        document.getElementById("btn-logout").addEventListener("click", () => {
+            state.currentUserId = null;
+            saveState();
+            updateUI();
+        });
+
+        // ---------------------------------------------------------------------
+        // 6. CONTROL DE CLIMA / LLUVIA Y COMPOSTAJE
+        // ---------------------------------------------------------------------
+        function setRainStatus(rained) {
+            state.isRaining = rained;
+            saveState();
+            if (rained) {
+                showToast("Lluvia reportada en Huancayo: Turnos de RIEGO suspendidos para ahorrar agua.", "rain");
+            } else {
+                showToast("Clima seco: Se reactivan los turnos normales de riego por goteo.", "info");
+            }
+            updateUI();
+        }
+
+        function addCompostContribution() {
+            state.compostKg += 5;
+            const user = getCurrentUser();
+            if (user) {
+                user.puntos += 15;
+            }
+            saveState();
+            showToast("+5 kg de residuos orgánicos agregados a la compostera (+15 pts).", "success");
+            updateUI();
+        }
+
+        // ---------------------------------------------------------------------
+        // 7. LÓGICA DE PESTAÑA 1: MI TURNO HOY
+        // ---------------------------------------------------------------------
+        document.getElementById("sim-day-select").addEventListener("change", function(e) {
+            state.currentDay = e.target.value;
+            saveState();
+            updateUI();
+        });
+
+        function renderMyTurnTab() {
+            const user = getCurrentUser();
+            if (!user) return;
+
+            const today = state.currentDay;
+            const isAssignedToday = user.dias.includes(today);
+            const isWateringTask = user.tarea === "Riego";
+            const turnKey = `${today}_${user.id}`;
+            const isCompleted = !!state.completedTurnsToday[turnKey];
+
+            // Etiquetas de día
+            document.getElementById("today-label-display").textContent = today;
+            document.querySelectorAll(".current-day-text").forEach(el => el.textContent = today);
+
+            const statusBox = document.getElementById("my-turn-status-box");
+            const tasksSection = document.getElementById("my-tasks-section");
+            const actionsSection = document.getElementById("my-turn-actions");
+            const btnComplete = document.getElementById("btn-complete-turn");
+
+            // Caso A: NO le toca ir hoy
+            if (!isAssignedToday) {
+                statusBox.className = "p-6 rounded-2xl border-2 border-tierra-200 bg-tierra-50/80";
+                statusBox.innerHTML = `
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-tierra-200 text-tierra-700 flex items-center justify-center text-2xl shrink-0">😌</div>
+                        <div>
+                            <span class="inline-block px-2.5 py-0.5 rounded-md bg-tierra-200 text-tierra-800 text-xs font-bold mb-1">Día Libre</span>
+                            <h3 class="font-display text-xl font-bold text-tierra-900">Hoy (${today}) no te toca ir al huerto</h3>
+                            <p class="text-sm text-tierra-600 mt-1">Tu apoyo está programado para los días: <strong>${user.dias.join(", ")}</strong> en el bloque <strong>${user.horario}</strong>.</p>
+                        </div>
+                    </div>
+                `;
+                tasksSection.classList.add("hidden");
+                actionsSection.classList.add("hidden");
+            } 
+            // Caso B: Sí le toca ir hoy, PERO es riego y LLOVIÓ
+            else if (isWateringTask && state.isRaining) {
+                statusBox.className = "p-6 rounded-2xl border-2 border-sky-300 bg-sky-50";
+                statusBox.innerHTML = `
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-sky-500 text-white flex items-center justify-center text-2xl shrink-0 shadow-sm">🌧️</div>
+                        <div>
+                            <span class="inline-block px-2.5 py-0.5 rounded-md bg-sky-200 text-sky-900 text-xs font-bold mb-1">Exonerado por Lluvia</span>
+                            <h3 class="font-display text-xl font-bold text-sky-950">¡No hace falta ir a regar hoy!</h3>
+                            <p class="text-sm text-sky-800 mt-1">
+                                Tenías turno de <strong>Riego</strong> (${user.horario}), pero como hoy llovió en Huancayo el suelo ya cuenta con humedad natural. <strong>Ahorramos agua y conservas tu asistencia.</strong>
+                            </p>
+                        </div>
+                    </div>
+                `;
+                tasksSection.classList.add("hidden");
+                actionsSection.classList.add("hidden");
+            }
+            // Caso C: Sí le toca ir hoy y el turno está ACTIVO (o ya completado)
+            else {
+                if (isCompleted) {
+                    statusBox.className = "p-6 rounded-2xl border-2 border-emerald-400 bg-emerald-50/70";
+                    statusBox.innerHTML = `
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-sm">🎉</div>
+                            <div>
+                                <span class="inline-block px-2.5 py-0.5 rounded-md bg-emerald-200 text-emerald-900 text-xs font-bold mb-1">¡Misión Cumplida!</span>
+                                <h3 class="font-display text-xl font-bold text-emerald-950">Ya completaste tu micro-turno de hoy</h3>
+                                <p class="text-sm text-emerald-800 mt-1">Gracias por sostener el huerto comunitario. Tus puntos de cosecha ya fueron acreditados.</p>
+                            </div>
+                        </div>
+                    `;
+                    btnComplete.disabled = true;
+                    btnComplete.className = "w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-200 text-emerald-800 font-bold text-sm cursor-not-allowed flex items-center justify-center gap-2";
+                    btnComplete.innerHTML = `<span>✓ Turno Registrado</span>`;
+                } else {
+                    statusBox.className = "p-6 rounded-2xl border-2 border-bosque-500 bg-bosque-50/70";
+                    statusBox.innerHTML = `
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-bosque-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-sm">🌱</div>
+                            <div>
+                                <span class="inline-block px-2.5 py-0.5 rounded-md bg-terracota-500 text-white text-xs font-bold mb-1">¡Hoy te toca ir!</span>
+                                <h3 class="font-display text-xl font-bold text-bosque-950">Tienes micro-turno de ${user.tarea}</h3>
+                                <p class="text-sm text-bosque-800 mt-1">
+                                    Horario sugerido: <strong>${user.horario}</strong> (Duración estimada: 15 a 30 minutos).
+                                    ${state.isRaining ? '<br><span class="text-sky-700 font-semibold">Nota: Aunque llovió hoy, tu tarea de ' + user.tarea + ' sigue activa.</span>' : ''}
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                    btnComplete.disabled = false;
+                    btnComplete.className = "w-full sm:w-auto px-6 py-3 rounded-xl bg-bosque-600 hover:bg-bosque-700 text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2";
+                    btnComplete.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Marcar Turno Completado</span>`;
+                }
+
+                // Renderizar checklist de micro-tareas
+                tasksSection.classList.remove("hidden");
+                actionsSection.classList.remove("hidden");
+                const protocols = MICRO_TASK_PROTOCOLS[user.tarea] || MICRO_TASK_PROTOCOLS["Riego"];
+                document.getElementById("my-tasks-checklist").innerHTML = protocols.map((step, idx) => `
+                    <label class="flex items-start gap-3 p-3 rounded-xl bg-tierra-50 border border-tierra-200 cursor-pointer hover:bg-tierra-100/70 transition">
+                        <input type="checkbox" ${isCompleted ? 'checked disabled' : ''} class="mt-0.5 w-4 h-4 rounded text-bosque-600 focus:ring-bosque-500">
+                        <span class="text-xs sm:text-sm text-tierra-800 leading-snug">${step}</span>
+                    </label>
+                `).join("");
+            }
+
+            // Ficha lateral del usuario
+            document.getElementById("profile-fullname").textContent = `${user.nombre} ${user.apellidos}`;
+            document.getElementById("profile-schedule").textContent = user.horario;
+            document.getElementById("profile-task").textContent = user.tarea;
+            document.getElementById("profile-days-pills").innerHTML = ALL_DAYS.map(d => {
+                const active = user.dias.includes(d);
+                return `<span class="px-2.5 py-1 rounded-lg text-xs font-bold ${active ? 'bg-bosque-600 text-white' : 'bg-tierra-100 text-tierra-400'}">${d.slice(0,3)}</span>`;
+            }).join("");
+
+            // Compañeros de guardia hoy
+            const companions = state.users.filter(u => u.dias.includes(today));
+            const compList = document.getElementById("today-companions-list");
+            if (companions.length === 0) {
+                compList.innerHTML = `<p class="text-xs text-tierra-500 italic">No hay vecinos programados para este día.</p>`;
+            } else {
+                compList.innerHTML = companions.map(c => {
+                    const suspended = (c.tarea === "Riego" && state.isRaining);
+                    return `
+                        <div class="flex items-center justify-between p-2.5 rounded-xl bg-white border border-tierra-200">
+                            <div>
+                                <p class="text-xs font-bold text-tierra-900">${c.nombre} ${c.apellidos} ${c.id === user.id ? '(Tú)' : ''}</p>
+                                <p class="text-[11px] text-tierra-500">${c.horario} &bull; ${c.tarea}</p>
+                            </div>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${suspended ? 'bg-sky-100 text-sky-800' : 'bg-bosque-100 text-bosque-800'}">
+                                ${suspended ? '🌧️ Sin riego' : 'Activo'}
+                            </span>
+                        </div>
+                    `;
+                }).join("");
+            }
+        }
+
+        function completeMyTurn() {
+            const user = getCurrentUser();
+            if (!user) return;
+            const turnKey = `${state.currentDay}_${user.id}`;
+            if (state.completedTurnsToday[turnKey]) return;
+
+            state.completedTurnsToday[turnKey] = true;
+            user.puntos += 30;
+            saveState();
+            showToast(`¡Excelente trabajo ${user.nombre}! Ganaste +30 puntos de cosecha.`, "success");
+            updateUI();
+        }
+
+        // ---------------------------------------------------------------------
+        // 8. LÓGICA DE PESTAÑA 2: CRONOGRAMA COMUNITARIO (TABLA)
+        // ---------------------------------------------------------------------
+        function renderScheduleTable() {
+            const tbody = document.getElementById("schedule-table-body");
+            const filterDay = document.getElementById("filter-day").value;
+            const filterTask = document.getElementById("filter-task").value;
+
+            let rowsHtml = "";
+
+            ALL_DAYS.forEach(day => {
+                if (filterDay === "HOY" && day !== state.currentDay) return;
+                if (filterDay !== "TODOS" && filterDay !== "HOY" && day !== filterDay) return;
+
+                const assignedUsers = state.users.filter(u => {
+                    const dayMatch = u.dias.includes(day);
+                    const taskMatch = (filterTask === "TODAS" || u.tarea === filterTask);
+                    return dayMatch && taskMatch;
+                });
+
+                if (assignedUsers.length === 0) {
+                    if (filterDay !== "TODOS") {
+                        rowsHtml += `
+                            <tr>
+                                <td colspan="5" class="py-8 text-center text-xs text-tierra-500">No hay turnos registrados para este filtro.</td>
+                            </tr>
+                        `;
+                    }
+                    return;
+                }
+
+                assignedUsers.forEach((u, index) => {
+                    const isToday = (day === state.currentDay);
+                    const isRainExempt = (isToday && u.tarea === "Riego" && state.isRaining);
+                    const isCompleted = !!state.completedTurnsToday[`${day}_${u.id}`];
+
+                    let statusBadge = `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800">⏳ Programado</span>`;
+                    if (isCompleted) {
+                        statusBadge = `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">✅ Completado</span>`;
+                    } else if (isRainExempt) {
+                        statusBadge = `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-800">🌧️ Exonerado por lluvia</span>`;
+                    } else if (isToday) {
+                        statusBadge = `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-bosque-100 text-bosque-800">🟢 Turno de Hoy</span>`;
+                    }
+
+                    rowsHtml += `
+                        <tr class="${isToday ? 'bg-bosque-50/40' : 'hover:bg-tierra-50/60'} transition">
+                            <td class="py-3.5 px-4 font-bold text-tierra-900 whitespace-nowrap">
+                                ${day} ${isToday ? '<span class="ml-1 text-[10px] uppercase bg-bosque-600 text-white px-1.5 py-0.5 rounded">Hoy</span>' : ''}
+                            </td>
+                            <td class="py-3.5 px-4">
+                                <div class="font-bold text-tierra-900">${u.nombre} ${u.apellidos}</div>
+                                <div class="text-xs text-tierra-500">${u.rol}</div>
+                            </td>
+                            <td class="py-3.5 px-4 text-xs font-medium text-tierra-700 whitespace-nowrap">${u.horario}</td>
+                            <td class="py-3.5 px-4">
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-tierra-100 text-tierra-800">${u.tarea}</span>
+                            </td>
+                            <td class="py-3.5 px-4 whitespace-nowrap">${statusBadge}</td>
+                        </tr>
+                    `;
+                });
+            });
+
+            tbody.innerHTML = rowsHtml || `<tr><td colspan="5" class="py-8 text-center text-xs text-tierra-500">No se encontraron turnos con los filtros seleccionados.</td></tr>`;
+        }
+
+        // ---------------------------------------------------------------------
+        // 9. LÓGICA DE PESTAÑA 3: SEGUIMIENTO DE CULTIVOS CON DATOS REALES
+        // ---------------------------------------------------------------------
+        function renderCropsGrid() {
+            const grid = document.getElementById("crops-grid");
+
+            grid.innerHTML = state.crops.map(crop => {
+                const info = CROP_KNOWLEDGE_BASE[crop.species] || CROP_KNOWLEDGE_BASE["Acelga"];
+                const pct = Math.min(100, Math.round((crop.daysElapsed / info.totalDays) * 100));
+                const daysRemaining = Math.max(0, info.totalDays - crop.daysElapsed);
+                const isReady = pct >= 100;
+
+                // Determinar etapa fenológica actual
+                const currentStage = info.stages.find(s => pct <= s.maxPct) || info.stages[info.stages.length - 1];
+
+                // Estado de riego según lluvia
+                const wateringStatus = state.isRaining 
+                    ? `<span class="text-sky-700 font-bold">🌧️ Cubierto por lluvia hoy</span>`
+                    : `<span class="text-bosque-700 font-semibold">${info.wateringFreq}</span>`;
+
+                return `
+                    <div class="card-organic p-5 flex flex-col justify-between transition hover:shadow-md ${isReady ? 'ring-2 ring-terracota-500 bg-terracota-50/20' : ''}">
+                        <div>
+                            <!-- Cabecera del cultivo -->
+                            <div class="flex items-start justify-between gap-2">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-2xl bg-tierra-100 flex items-center justify-center text-2xl shrink-0">
+                                        ${info.emoji}
+                                    </div>
+                                    <div>
+                                        <h4 class="font-display font-bold text-tierra-900 text-base">${crop.species}</h4>
+                                        <p class="text-[11px] italic text-tierra-500">${info.scientificName}</p>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-full text-[11px] font-bold ${isReady ? 'bg-terracota-500 text-white animate-pulse' : 'bg-bosque-100 text-bosque-800'}">
+                                    ${isReady ? '¡Cosechar!' : `Faltan ${daysRemaining}d`}
+                                </span>
+                            </div>
+
+                            <!-- Ubicación y fecha -->
+                            <div class="mt-3 flex items-center justify-between text-xs text-tierra-600 bg-tierra-50 px-3 py-1.5 rounded-xl">
+                                <span>📍 ${crop.bed}</span>
+                                <span>Siembra: ${crop.plantedDate}</span>
+                            </div>
+
+                            <!-- Barra de Progreso Real -->
+                            <div class="mt-4">
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span class="text-tierra-800">Día ${crop.daysElapsed} de ${info.totalDays}</span>
+                                    <span class="${isReady ? 'text-terracota-600' : 'text-bosque-700'}">${pct}%</span>
+                                </div>
+                                <div class="w-full h-3 bg-tierra-200 rounded-full overflow-hidden">
+                                    <div class="h-full rounded-full transition-all duration-500 ${isReady ? 'bg-terracota-500' : 'bg-bosque-600'}" style="width: ${pct}%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Etapa actual y consejo agronómico -->
+                            <div class="mt-4 p-3 rounded-xl bg-bosque-50/80 border border-bosque-200/80 space-y-1">
+                                <p class="text-xs font-bold text-bosque-900">🌱 Etapa: ${currentStage.name}</p>
+                                <p class="text-[11px] text-bosque-800 leading-relaxed">💡 <strong>Manejo técnico:</strong> ${currentStage.tip}</p>
+                            </div>
+
+                            <!-- Datos de resistencia y riego -->
+                            <div class="mt-3 pt-3 border-t border-tierra-100 space-y-1.5 text-xs">
+                                <div class="flex justify-between">
+                                    <span class="text-tierra-500">❄️ Heladas:</span>
+                                    <span class="font-semibold text-tierra-800">${info.frostTolerance}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-tierra-500">💧 Riego:</span>
+                                    ${wateringStatus}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botón de acción si está lista para cosechar -->
+                        <div class="mt-4 pt-3 border-t border-tierra-100">
+                            ${isReady 
+                                ? `<button onclick="harvestCrop('${crop.id}')" class="w-full py-2.5 px-4 rounded-xl bg-terracota-600 hover:bg-terracota-700 text-white text-xs font-bold shadow transition">🧺 Registrar Cosecha y Repartir (+40 pts)</button>`
+                                : `<div class="text-[11px] text-tierra-500 text-center">Sustrato: ${info.soilNote}</div>`
+                            }
+                        </div>
+                    </div>
+                `;
+            }).join("");
+        }
+
+        function advanceCropDays(days) {
+            state.crops.forEach(c => {
+                c.daysElapsed += days;
+            });
+            saveState();
+            showToast(`Simulación: Avanzaron ${days} días en el calendario fenológico del huerto.`, "info");
+            renderCropsGrid();
+        }
+
+        function harvestCrop(cropId) {
+            const crop = state.crops.find(c => c.id === cropId);
+            if (!crop) return;
+
+            const user = getCurrentUser();
+            if (user) user.puntos += 40;
+
+            // Reiniciar ciclo de siembra en esa cama o eliminar
+            crop.daysElapsed = 0;
+            crop.plantedDate = "Hoy (Resiembra)";
+            saveState();
+
+            showToast(`¡Cosecha de ${crop.species} registrada para reparto vecinal! (+40 pts)`, "success");
+            updateUI();
+        }
+
+        // Modal Nueva Siembra
+        function openNewCropModal() {
+            updateCropPresetInfo();
+            document.getElementById("modal-new-crop").classList.remove("hidden");
+        }
+        function closeNewCropModal() {
+            document.getElementById("modal-new-crop").classList.add("hidden");
+        }
+        function updateCropPresetInfo() {
+            const sp = document.getElementById("crop-species-select").value;
+            const info = CROP_KNOWLEDGE_BASE[sp];
+            document.getElementById("crop-preset-details").innerHTML = `
+                <p><strong>Ciclo real en Huancayo:</strong> ${info.totalDays} días hasta cosecha.</p>
+                <p><strong>Resistencia a heladas:</strong> ${info.frostTolerance}</p>
+                <p><strong>Frecuencia de riego:</strong> ${info.wateringFreq}</p>
+            `;
+        }
+
+        document.getElementById("new-crop-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const species = document.getElementById("crop-species-select").value;
+            const bed = document.getElementById("crop-bed").value.trim();
+            const daysElapsed = parseInt(document.getElementById("crop-initial-days").value, 10) || 0;
+
+            state.crops.unshift({
+                id: "c_" + Date.now(),
+                species,
+                bed,
+                daysElapsed,
+                plantedDate: "Nov 2026"
+            });
+
+            saveState();
+            closeNewCropModal();
+            this.reset();
+            showToast(`Nueva siembra de ${species} registrada en ${bed}.`, "success");
+            renderCropsGrid();
+        });
+
+        // ---------------------------------------------------------------------
+        // 10. MODAL EDITAR HORARIO DE USUARIO
+        // ---------------------------------------------------------------------
+        function openEditScheduleModal() {
+            const user = getCurrentUser();
+            if (!user) return;
+
+            const container = document.getElementById("edit-days-container");
+            container.innerHTML = ALL_DAYS.map(d => `
+                <label class="cursor-pointer">
+                    <input type="checkbox" name="edit-dias" value="${d}" ${user.dias.includes(d) ? 'checked' : ''} class="peer sr-only">
+                    <div class="text-center py-2 px-1 rounded-xl border border-tierra-200 bg-tierra-50 text-xs font-semibold text-tierra-700 peer-checked:bg-bosque-600 peer-checked:text-white transition">${d.slice(0,3)}</div>
+                </label>
+            `).join("");
+
+            document.getElementById("edit-horario").value = user.horario;
+            document.getElementById("edit-tarea").value = user.tarea;
+            document.getElementById("modal-edit-schedule").classList.remove("hidden");
+        }
+
+        function closeEditScheduleModal() {
+            document.getElementById("modal-edit-schedule").classList.add("hidden");
+        }
+
+        document.getElementById("edit-schedule-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const user = getCurrentUser();
+            if (!user) return;
+
+            const checked = Array.from(document.querySelectorAll('input[name="edit-dias"]:checked')).map(cb => cb.value);
+            if (checked.length === 0) {
+                showToast("Debes elegir al menos un día.", "info");
+                return;
+            }
+
+            user.dias = checked;
+            user.horario = document.getElementById("edit-horario").value;
+            user.tarea = document.getElementById("edit-tarea").value;
+            saveState();
+            closeEditScheduleModal();
+            showToast("Disponibilidad actualizada correctamente.", "success");
+            updateUI();
+        });
+
+        // ---------------------------------------------------------------------
+        // 11. NAVEGACIÓN DE PESTAÑAS Y ACTUALIZACIÓN GLOBAL DE UI
+        // ---------------------------------------------------------------------
+        function switchTab(tabId) {
+            ["tab-mi-turno", "tab-cronograma", "tab-cultivos"].forEach(id => {
+                document.getElementById(id).classList.add("hidden");
+            });
+            ["btn-tab-mi-turno", "btn-tab-cronograma", "btn-tab-cultivos"].forEach(btnId => {
+                const btn = document.getElementById(btnId);
+                btn.classList.remove("tab-active");
+                btn.classList.add("text-tierra-700", "hover:bg-white/60");
+            });
+
+            document.getElementById(tabId).classList.remove("hidden");
+            const activeBtn = document.getElementById("btn-" + tabId);
+            activeBtn.classList.add("tab-active");
+            activeBtn.classList.remove("text-tierra-700", "hover:bg-white/60");
+        }
+
+        function updateRainUI() {
+            const card = document.getElementById("rain-control-card");
+            const desc = document.getElementById("rain-status-desc");
+            const iconBadge = document.getElementById("rain-icon-badge");
+            const btnYes = document.getElementById("btn-rain-yes");
+            const btnNo = document.getElementById("btn-rain-no");
+
+            if (state.isRaining) {
+                card.classList.add("bg-sky-50/70", "border-sky-300");
+                desc.innerHTML = `<strong class="text-sky-800">¡Lluvia confirmada!</strong> Riego suspendido hoy automáticamente para evitar pudrición y ahorrar agua.`;
+                iconBadge.className = "w-12 h-12 rounded-2xl bg-sky-500 text-white flex items-center justify-center text-2xl shrink-0 shadow-sm";
+                iconBadge.textContent = "🌧️";
+
+                btnYes.className = "flex-1 py-2 px-3 rounded-xl text-xs font-bold border bg-sky-600 text-white border-sky-600 shadow-sm transition flex items-center justify-center gap-1.5";
+                btnNo.className = "flex-1 py-2 px-3 rounded-xl text-xs font-bold border bg-white text-tierra-600 border-tierra-200 hover:bg-tierra-50 transition flex items-center justify-center gap-1.5";
+            } else {
+                card.classList.remove("bg-sky-50/70", "border-sky-300");
+                desc.textContent = "Sin reporte de lluvia. Los turnos de riego ecológico por goteo están activos.";
+                iconBadge.className = "w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl shrink-0";
+                iconBadge.textContent = "☀️";
+
+                btnYes.className = "flex-1 py-2 px-3 rounded-xl text-xs font-bold border bg-white text-tierra-600 border-tierra-200 hover:bg-sky-50 transition flex items-center justify-center gap-1.5";
+                btnNo.className = "flex-1 py-2 px-3 rounded-xl text-xs font-bold border bg-amber-500 text-white border-amber-500 shadow-sm transition flex items-center justify-center gap-1.5";
+            }
+        }
+
+        function updateUI() {
+            const user = getCurrentUser();
+            const authScreen = document.getElementById("auth-screen");
+            const appScreen = document.getElementById("app-screen");
+
+            if (!user) {
+                authScreen.classList.remove("hidden");
+                appScreen.classList.add("hidden");
+                renderQuickLoginList();
+                return;
+            }
+
+            authScreen.classList.add("hidden");
+            appScreen.classList.remove("hidden");
+
+            // Navbar & KPIs
+            document.getElementById("sim-day-select").value = state.currentDay;
+            document.getElementById("nav-user-name").textContent = `${user.nombre} ${user.apellidos}`;
+            document.getElementById("nav-user-points").textContent = `${user.puntos} pts cosecha`;
+            document.getElementById("card-user-points").textContent = user.puntos;
+
+            // Compost KPI
+            document.getElementById("compost-kg-display").textContent = state.compostKg;
+            const compostPct = Math.min(100, Math.round((state.compostKg / 500) * 100));
+            document.getElementById("compost-progress-bar").style.width = `${compostPct}%`;
+
+            // Canasta status
+            const basketBadge = document.getElementById("basket-status-badge");
+            if (user.puntos >= 100) {
+                basketBadge.textContent = "Califica (1.5 kg)";
+                basketBadge.className = "font-bold text-bosque-700 bg-bosque-100 px-2 py-0.5 rounded-lg";
+            } else {
+                basketBadge.textContent = `Faltan ${100 - user.puntos} pts`;
+                basketBadge.className = "font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-lg";
+            }
+
+            updateRainUI();
+            renderMyTurnTab();
+            renderScheduleTable();
+            renderCropsGrid();
+        }
+
+        // Inicialización al cargar la página
+        window.addEventListener("DOMContentLoaded", () => {
+            loadState();
+            updateUI();
+        });
+    </script>
+</body>
+</html>
